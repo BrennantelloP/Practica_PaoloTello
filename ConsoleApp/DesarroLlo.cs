@@ -10,6 +10,8 @@ namespace ConsoleApp
             static void Main(string[] args)
         {
             int edad = 1;
+            string genero;
+            bool sexo = false;
             String nombre = "";
             string diactual="";
                 DateTime diaactual = DateTime.Today;
@@ -24,7 +26,6 @@ namespace ConsoleApp
             {
                 Log.Information("insertar nombre");
                 nombre = Console.ReadLine();
-                Console.Read();
 
               
             }
@@ -70,22 +71,40 @@ namespace ConsoleApp
                 Log.Error("Error en:" + ex.Message);
                 Console.WriteLine("Error:" + ex.Message);
             }
-            catch (OutOfMemoryException ex)
-            {
-                Log.Error("Error en:" + ex.Message);
-                Console.WriteLine("Error:" + ex.Message);
-            }
             catch (IOException ex)
             {
                 Log.Error("Error en:" + ex.Message);
                 Console.WriteLine("Error:" + ex.Message);
             }
-            catch (Exception ex)
+
+            Console.WriteLine("Agregar sexo:");
+            try
+            {
+                sexo = bool.Parse(Console.ReadLine());
+                Log.Information("sexo ingresado");
+            }
+            catch (ArgumentNullException ex)
             {
                 Log.Error("Error en:" + ex.Message);
                 Console.WriteLine("Error:" + ex.Message);
             }
+            catch (FormatException ex)
+            {
+                Log.Error("Error en:" + ex.Message);
+                Console.WriteLine("Error:" + ex.Message);
+            }
+            Console.Write("Hola " + nombre + ", " + edad + " años");
+            if (sexo)
+            {
+                genero = "masculino";
+            }
+            else
+            {
+                genero = "femenino";
+            }
 
+            Console.Write("  género " + genero);
+            Console.Read();
 
         }
         }
